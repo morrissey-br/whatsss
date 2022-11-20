@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import qrcodeTerminal from "qrcode-terminal";
 
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
@@ -7,12 +8,15 @@ import puppeteer from "puppeteer";
   await page.goto("https://web.whatsapp.com/");
 
   await page.waitForSelector('div[data-testid="qrcode"]');
-  const qrCode = await page.evaluate(() => {
-    const qrCodeDiv = document.querySelector('div[data-testid="qrcode"]');
-    const qrCode = qrCodeDiv?.getAttribute("data-ref");
-    return qrCode;
+  const qrcode = await page.evaluate(() => {
+    const qrcodeDiv = document.querySelector('div[data-testid="qrcode"]');
+    const qrcode = qrcodeDiv?.getAttribute("data-ref");
+    return qrcode;
   });
-  console.log(qrCode);
 
-  await browser.close();
+  if (qrcode) {
+    qrcodeTerminal.generate(qrcode, { small: true });
+  }
+
+  // await browser.close();
 })();
