@@ -4,9 +4,11 @@
   "description": "A Whatsapp Web wrapper to send and recive messages",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
   "dependencies": {
-    "puppeteer": "^19.2.2",
-    "ts-node": "^10.9.1"
+    "puppeteer": "^19.2.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.43.0",
@@ -14,6 +16,7 @@
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "2.7.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "ts-node": "^10.9.1"
   }
 }
